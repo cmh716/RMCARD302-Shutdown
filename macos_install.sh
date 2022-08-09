@@ -21,7 +21,7 @@ XML="<?xml version=\"1.0\" encoding=\"UTF-8\"?>
     <string>com.cmh716.RMCARD302</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/bin/python3</string>
+        <string>/usr/local/bin/python3</string>
         <string>$BINDIR/$FILENAME</string>
         <string>-p $PORT</string>
     </array>
