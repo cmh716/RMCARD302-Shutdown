@@ -1,9 +1,8 @@
 # RMCARD302-Shutdown
 **CyberPower RMCARD302 Shutdown Agent**
 
-The purpose of this project is to shutdown computers when the CyberPower RMCARD302 SNMP card sends the *On Battery* and the *Low Battery* SNMP Traps. This is intended as lightweight option when compared to running a NUT server.
+The purpose of this project is to shutdown computers when the CyberPower [RMCARD302](https://www.cyberpowersystems.com/product/ups/hardware/rmcard302/) SNMP card sends the *On Battery* and the *Low Battery* SNMP Traps. This is intended as lightweight option when compared to running a NUT server.
 
-Add Documentaion links here
 
 **Prerequisites**
 
