@@ -6,8 +6,8 @@ import subprocess
 import sys
 
 def shutdown():
-    #subprocess.call(['osascript', '-e', 'tell application "Finder" to shut down'])
-    subprocess.call(['osascript', '-e', 'display notification "Would shutdown now" with title "UPS"'])
+    subprocess.call(['osascript', '-e', 'tell application "Finder" to shut down'])
+    #subprocess.call(['osascript', '-e', 'display notification "Would shutdown now" with title "UPS"'])
 
 
 Port=162;
