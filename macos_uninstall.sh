@@ -4,8 +4,7 @@ BINDIR=$HOME/.RMCARD302
 FILENAME=RMCARD302_MacOS.py
 
 LAUNCHITEM="$HOME/Library/LaunchAgents/com.cmh716.RMCARD302.plist"
-OUTPUT_LOGFILE="$HOME/Library/Logs/RMCARD302-Output.log"
-ERROR_LOGFILE="$HOME/Library/Logs/RMCARD302-Error.log"
+OUTPUT_LOGFILE="$HOME/Library/Logs/RMCARD302.log"
 
 echo "Stopping power server..."
 
@@ -21,10 +20,6 @@ rm "$LAUNCHITEM"
 echo "Removing logs"
 if [ -f "$OUTPUT_LOGFILE" ]; then
   rm "$OUTPUT_LOGFILE"
-fi
-
-if [ -f "$ERROR_LOGFILE" ]; then
-  rm "$ERROR_LOGFILE"
 fi
 
 echo "Done."

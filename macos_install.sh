@@ -26,9 +26,9 @@ XML="<?xml version=\"1.0\" encoding=\"UTF-8\"?>
         <string>-p $PORT</string>
     </array>
     <key>StandardErrorPath</key>
-    <string>$HOME/Library/Logs/RMCARD302-Error.log</string>
+    <string>$HOME/Library/Logs/RMCARD302.log</string>
     <key>StandardOutPath</key>
-    <string>$HOME/Library/Logs/RMCARD302-Output.log</string>
+    <string>$HOME/Library/Logs/RMCARD302.log</string>
     <key>RunAtLoad</key>
     <true/>
     <key>KeepAlive</key>

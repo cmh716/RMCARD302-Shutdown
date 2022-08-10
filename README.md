@@ -51,8 +51,7 @@ ps -A | grep RMCARD
 
 You can view the logs here:
 ```
-tail $HOME/Library/Logs/RMCARD302-Error.log
-tail $HOME/Library/Logs/RMCARD302-Output.log
+tail $HOME/Library/Logs/RMCARD302.log
 ``` 
 --- 
 

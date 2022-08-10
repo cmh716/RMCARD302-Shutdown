@@ -4,6 +4,7 @@ from pysnmp.entity.rfc3413 import ntfrcv
 import getopt
 import subprocess
 import sys
+import logging
 
 def shutdown():
     subprocess.call(['osascript', '-e', 'tell application "Finder" to shut down'])
@@ -12,6 +13,11 @@ def shutdown():
 
 Port=162;
 CyberPowerOID = ['1.3.6.1.6.3.1.1.4.1.0']
+
+logging.basicConfig(
+    format='%(asctime)s %(levelname)-8s %(message)s',
+    level=logging.INFO,
+    datefmt='%Y-%m-%d %H:%M:%S')
 
 OnBattery = False;
 LowBattery = False;
@@ -31,7 +37,7 @@ snmpEngine = engine.SnmpEngine()
 
 TrapAgentAddress='0.0.0.0'; 
 
-print("RMCARD302 Shutdown agent is listening for SNMP Traps on "+TrapAgentAddress+" , Port : " +str(Port));
+logging.info("RMCARD302 Shutdown agent is listening for SNMP Traps on "+TrapAgentAddress+" , Port : " +str(Port));
 
 config.addTransport(
     snmpEngine,
@@ -47,25 +53,25 @@ def cbFun(snmpEngine, stateReference, contextEngineId, contextName,
     global OnBattery;
     global LowBattery;
 
-    print("Received new Trap message");
+
     for name, val in varBinds:
         if name.prettyPrint() in CyberPowerOID:
             if val.prettyPrint() == '1.3.6.1.4.1.3808.0.5':
                 OnBattery = True;
-                print('Power Failed - UPS is on battery');
+                logging.info('Power Failed - UPS is on battery');
                 subprocess.call(['osascript', '-e', 'display notification "Power Failed - UPS is on battery" with title "UPS"'])
             elif val.prettyPrint() == '1.3.6.1.4.1.3808.0.9':
                 OnBattery = False;
-                print('Power Restored - UPS is online');
+                logging.info('Power Restored - UPS is online');
                 subprocess.call(['osascript', '-e', 'display notification "Power Restored - UPS is online" with title "UPS"'])
             elif val.prettyPrint() == '1.3.6.1.4.1.3808.0.7':
                 LowBattery = True;
-                print('The UPS is battery is low');
+                logging.info('The UPS is battery is low');
             elif val.prettyPrint() == '1.3.6.1.4.1.3808.0.11':
                 OnBattery = False;
-                print('The UPS is battery is no longer low');
+                logging.info('The UPS is battery is no longer low');
             else:
-                print('CyberPower SNMP Message received: %s = %s' % (name.prettyPrint(), val.prettyPrint()))
+                logging.info('CyberPower SNMP Message received: %s = %s' % (name.prettyPrint(), val.prettyPrint()))
     if OnBattery and LowBattery:
         OnBattery = False;
         LowBattery = False;
